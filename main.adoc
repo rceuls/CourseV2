@@ -1,0 +1,86 @@
+= Cursus ASP .NET
+:Author: Raf Ceuls
+:source-highlighter: prettify
+
+== Intro
+
+== C#
+
+== Object Oriented Programming
+
+== ASP.NET
+
+=== Wat we gaan maken
+
+* Census programma (bewoners per gemeente tracken)
+* Tracked gemeentes en inwoners
+
+=== MVC Pattern
+
+==== View Layer
+
+==== Controller Layer
+
+==== Model Layer
+
+=== Use Cases
+
+==== Gemeentes beheren (CRUD)
+* Aanmaken, verwijderen, editeren van gemmeentes
+* Overzicht & detailpagina van gemeentes bekijken
+
+==== Bewoners beheren (CRUD)
+* Aanmaken, verwijderen, editeren van personen
+* Overzicht & detailpagina van personen bekijken
+* Personen inwoner maken van gemeente (op één bepaald adres)
+
+==== Bewoners overzicht (API)
+* Overzicht geboortes per jaar
+* Exposen van filterbare data via JSON
+
+=== Domain Model
+
+[source,csharp]
+----
+public class Municipality {
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string ZipCode { get; set; }
+}
+
+public class PersonMunicipality {
+    public int Id { get; set; }
+    public Municipality Municipality { get; set; }
+    public Person Person { get; set; }
+    public DateTime StartsAt { get; set; }
+    public DateTime? EndsAt { get; set; }
+}
+
+public class Person {
+    public int Id { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public DateTime DateOfBirth { get; set; }
+}
+----
+
+=== Structuur applicatie
+==== Entrypoint
+* Start de webserver + inladen nodige configuratiebestanden
+
+==== Controllers
+* Eén per business case, logische opbouw. In dit geval - één voor gemeente, één voor personen
+
+==== Views
+* Eén per functionaliteit.
+* Herbruik componenten
+
+==== Models
+* Zo dom mogelijk, platte data. 
+* Kan herbruikt worden, bij twijfel of grote afwijkingen opsplitsen.
+
+== Andere
+
+=== Unit Testing
+
+=== Authentication
