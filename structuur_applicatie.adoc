@@ -1,0 +1,13 @@
+= Entrypoint
+* Start de webserver + inladen nodige configuratiebestanden
+
+= Controllers
+* Eén per business case, logische opbouw. In dit geval - één voor gemeente, één voor personen
+
+= Views
+* Eén per functionaliteit.
+* Herbruik componenten
+
+= Models
+* Zo dom mogelijk, platte data. 
+* Kan herbruikt worden, bij twijfel of grote afwijkingen opsplitsen.

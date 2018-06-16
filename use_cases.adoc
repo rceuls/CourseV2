@@ -1,0 +1,12 @@
+= Gemeentes beheren (CRUD)
+* Aanmaken, verwijderen, editeren van gemmeentes
+* Overzicht & detailpagina van gemeentes bekijken
+
+= Bewoners beheren (CRUD)
+* Aanmaken, verwijderen, editeren van personen
+* Overzicht & detailpagina van personen bekijken
+* Personen inwoner maken van gemeente (op één bepaald adres)
+
+= Bewoners overzicht (API)
+* Overzicht geboortes per jaar
+* Exposen van filterbare data via JSON
