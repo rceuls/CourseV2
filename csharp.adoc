@@ -1,9 +1,11 @@
+:source-highlighter: pygments
+
 == Intro
 - Code testen kan door een nieuw console-project aan te maken. 
 1. `dotnet new console -n projectnaam`
 2. `code projectnaam`
 
-.Algemene Structuur
+=== Algemene Structuur
 [source,csharp]
 ----
 using System; // <1> 
@@ -25,7 +27,7 @@ namespace CSharpIntro // <2>
 <4> Dit is een function, gegroepeerde statements binnen een herbruikbar blok. 
 <5> Dit is een statement. Deze gaat uitgevoerd worden in de applicatie als de functie waarin het statement staat aangeroepen wordt.
 
-.Variabelen
+=== Variabelen
 [source,csharp]
 ----
 using System;
@@ -60,7 +62,7 @@ namespace CSharpIntro
 }
 ----
  
-.Conditionals
+=== Conditionals
 [source,csharp]
 ----
 using System;
@@ -99,6 +101,39 @@ namespace CSharpIntro
             {
                 Console.WriteLine("Item 6");
             }
+        }
+    }
+}
+----
+
+=== Itereren
+[source,csharp]
+----
+using System;
+
+namespace CSharpIntro
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var items = new[] { 1, 2, 3 };
+            foreach (var item in items)
+            {
+                Console.WriteLine(item);
+            }
+
+            for (int i = 0; i < items.Length; i++)
+            {
+                Console.WriteLine(i + " " + items[i]);
+            }
+
+            var cnt = 0;
+            do
+            {
+                Console.WriteLine(cnt+ " " + items[cnt]);
+                cnt++;
+            } while (cnt < items.Length);
         }
     }
 }
