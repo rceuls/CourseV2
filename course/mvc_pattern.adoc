@@ -1,5 +1,5 @@
-= View Layer
+== View Layer
 
-= Controller Layer
+== Controller Layer
 
-= Model Layer
+== Model Layer
