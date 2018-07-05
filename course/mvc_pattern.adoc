@@ -1,5 +1,0 @@
-== View Layer
-
-== Controller Layer
-
-== Model Layer
