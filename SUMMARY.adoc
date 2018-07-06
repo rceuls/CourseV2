@@ -11,6 +11,6 @@
 .. link:entity_framework.adoc[Entity Framework]
 . link:use_cases.adoc[Use Cases]
 .. link:domain_model.adoc[Domain Model]
-. link:structuur_applicatie.adoc[Applicatie Structuur]
+. link:project_setup.adoc[Applicatie Structuur]
 . link:unit_testing.adoc[Unit Testing]
 . link:authentication.adoc[Andere]

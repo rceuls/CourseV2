@@ -1,0 +1,123 @@
+:imagesdir: images
+:experimental: 
+
+- Verwijder eerst alle html uit `Index.cshtml` (Views -> Home) zodat je bestand er als volgende uitziet.
+image:Census/03_NewPageEmptyIndex.PNG[Lege index pagina]
+
+- Voeg nu de volgende code toe aan de pagina:
+
+[source,csharp]
+----
+<div>
+    @System.DateTime.Now
+</div>
+----
+
+- Als je de pagina runt zie je de huidige datum en tijd verschijnen. Bij refreshen zal de datum ook geupdated worden.
+
+- Vervang de bovenstaande code met het volgende:
+
+[source,csharp]
+----
+<div>
+    @{
+        var now = System.DateTime.Now;
+        if(now.Second % 2 == 0) {
+            @true 
+        }
+        else{
+            @false
+        }
+        @now
+    }
+</div>
+----
+
+- Het is duidelijk dat je met het bovenstaande verregaande logica kan inbouwen in de pagina; het is echter een bad practice om de logica allemaal in de view te zetten. Het is beter om hier gebruik te maken van een *model*.
+
+- Maak een nieuwe klasse aan binnen `Models`, genaamd `DateTimeViewModel.cs`
+
+[source,csharp]
+----
+using System;
+
+namespace Census.Models
+{
+    public class DateTimeViewModel
+    {
+        public DateTime Now { get; }
+
+        public DateTimeViewModel()
+        {
+            Now = DateTime.Now;
+        }
+
+        public bool IsEven => Now.Second % 2 == 0;
+    }
+}
+----
+
+- Zorg er voor dat dit de inhoud is van `Index.cshtml`
+
+[source,csharp]
+----
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model DateTimeViewModel
+
+<div>
+    @Model.Now
+</div>
+<div>
+   @Model.IsEven
+</div>
+----
+
+- Zoek in de `HomeController` de `public IActionResult Index()` methode op, en zorg er voor dat ze er als volgt uitziet
+
+[source,csharp]
+----
+public IActionResult Index()
+{
+    var model = new DateTimeViewModel();
+    return View(model);
+}
+----
+
+- Als je nu de code runt zal je zien dat je ongeveer hetzelfde resultaat krijgt. Je merkt ook dat deze code beter onderhoudbaar is.
+-- Elk object heeft zijn verantwoordelijkheid: het model is verantwoordelijk voor de data bij te houden, de controller zorgt voor de lifecycle van het model en de view is verantwoordelijk voor het tonen van de data.
+
+** Dit zorgt er voor dat je een hoge herbruikbaarheid krijgt van je code, let hiervoor op het volgende voorbeeld:
+
+** Maak een nieuwe controller aan, `ApiController` in dezelfde namespace als de HomeController met de volgende inhoud:
+
+[source,csharp]
+----
+using Census.Models;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Census.Controllers
+{
+    [Route("api")]
+    public class APIController : Controller
+    {
+        [HttpGet("date")]
+        public IActionResult Date()
+        {
+            var model = new DateTimeViewModel();
+            return Json(model);
+        }
+    }
+}
+----
+
+** Run de applicatie (btn:[F5]) en surf naar https://localhost:5001/api/date. Je krijgt nu het volgende resultaat:
+
+[source,json]
+----
+{"now":"2018-07-06T10:48:16.9485508+02:00","isEven":true}
+----
+
+** Merk op dat je hier niets speciaal hebt moeten voor doen; de logica blijft in de `DateTimeViewModel`. Het enige wat we gemanipuleerd hebben is de manier waarop het teruggeven wordt (json ipv een html pagina).

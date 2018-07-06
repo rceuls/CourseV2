@@ -1,0 +1,30 @@
+:imagesdir: images
+:experimental:
+
+== Project setup
+
+1. Maak een nieuw project aan
+image:Census/00_CreateProject.PNG[Aanmaken project]
+
+2. Open het project in Visual Studio Code
+
+3. Je krijgt de volgende tekst: `Required assets to build and debug are missing from 'Census'. Add them?`. Beantwoord deze vraag met btn:[Yes].
+
+4. Je krijgt het volgende scherm te zien
+image:Census/01_CleanProject.PNG[Clean project]
+
+Hierin bevinden zich volgende folders:
+|====
+|.vscode|Settings voor dit project (om te debuggen).
+|bin|Hier komen de gecompileerde dll's in terecht.
+|Controllers|De code van de controllers van het MVC pattern komen hier in terecht. (C#)
+|Models|De code van de models van het MVC pattern komen hier in terecht. (C#)
+|Properties|Launchsettings van de applicatie.
+|Views|De code van de views van het MVC pattern komen hier terecht (razor pages, javascript, ...).
+|Census.csproj|Compilatie-instellingen, externe packages, ... 
+|Program.cs|Het programma dat gerunned wordt wanneer de ASP.NET MVC applicatie opstart.
+|Startup.cs|Instellingen voor het programma; hierin worden application wide settings doorgevoerd.
+|====
+
+5. Als je nu het program opstart via btn:[F5] krijg je de website te zien (met een hoop placeholder data).
+image:Census/02_GeneratedWebsite.PNG[Clean website]
