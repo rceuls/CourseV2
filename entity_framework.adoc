@@ -8,6 +8,7 @@ Een abstractielaag bovenop een relationele database (ORM). Zorgt er voor dat je 
 == Hoe?
 - Nuget packages afhankelijk van de provider (= database) waarmee je werkt.
 - Een klasse afgeleid van DbContext maken waarin je je data definieert.
+
 [source,csharp]
 ----
 public class DataRepository : DbContext
@@ -15,13 +16,16 @@ public class DataRepository : DbContext
     public DbSet<PersonDataModel> Persons { get; set; }
 }
 ----
+
 - Deze klasse injecteren in de dependency provider (in `Startup.ConfigureServices`). Deze code is afhankelijk van welke databaseprovider je hebt; in dit voorbeeld is het een in memory database.
+
 [source,csharp]
 ----
 services
     .AddEntityFrameworkInMemoryDatabase()
     .AddDbContext<DataRepository>(opt => opt.UseInMemoryDatabase("TestName");
 ----
+
 - Je kan de `DataRepository` nu aanspreken door middel van constructor injection in de klasses waar nodig. Je kan dan de DbSets aanspreken zoals je zou doen met een standaard IEnumerable<T> met behulp van LINQ.
 
 CAUTION: Zorg er voor dat je begint met je `where` en dergelijke meer, en dan pas je ToList() gebruikt. Dit is juist: `_repo.Persons.Where(x => x.FirstName == "Raf").ToList();`. Dit is fout:             `_repo.Persons.ToList().Where(x => x.FirstName == "Raf").ToList();`. Achterliggend gaat de `ToList()`` immers de query uitvoeren. In het eerste geval vertaalt dit zich naar een query met een where-clausule op naam en haalt hij deze op van de database. Bij de tweede query haalt hij alle persons op en gaat hij, *in memory*, de personen er uit filteren. Dit is minder performant.  
