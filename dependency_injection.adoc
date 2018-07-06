@@ -28,10 +28,10 @@ public APIController(IMyService myService)
 ----
 
 == Lifecycle
-
+Een lifecycle omvat op welke manier (en meerbepaald wanneer) de container objecten gaat aanmaken. Er zijn hier verschillende keuzes voor.
 |===
 |Scope|Beschrijving|Voorbeeld
-    
+
 |Transient|Eén instantie per container request|IHttpContextFactory
 |Scoped|Eén instantie per web-service request|EntityContext (EntityFramework)
 |Singleton|één instantie voor héél de applicatie.|ILoggerFactory

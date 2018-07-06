@@ -113,7 +113,7 @@ namespace Census.Controllers
 }
 ----
 
-** Run de applicatie (btn:[F5]) en surf naar https://localhost:5001/api/date. Je krijgt nu het volgende resultaat:
+** Run de applicatie (via F5) en surf naar https://localhost:5001/api/date. Je krijgt nu het volgende resultaat:
 
 [source,json]
 ----

@@ -8,7 +8,7 @@ image:Census/00_CreateProject.PNG[Aanmaken project]
 
 2. Open het project in Visual Studio Code
 
-3. Je krijgt de volgende tekst: `Required assets to build and debug are missing from 'Census'. Add them?`. Beantwoord deze vraag met btn:[Yes].
+3. Je krijgt de volgende tekst: `Required assets to build and debug are missing from 'Census'. Add them?`. Beantwoord deze vraag met 'Yes'.
 
 4. Je krijgt het volgende scherm te zien
 image:Census/01_CleanProject.PNG[Clean project]
@@ -26,5 +26,5 @@ Hierin bevinden zich volgende folders:
 |Startup.cs|Instellingen voor het programma; hierin worden application wide settings doorgevoerd.
 |====
 
-5. Als je nu het program opstart via btn:[F5] krijg je de website te zien (met een hoop placeholder data).
+5. Als je nu het program opstart via F5 krijg je de website te zien (met een hoop placeholder data).
 image:Census/02_GeneratedWebsite.PNG[Clean website]
