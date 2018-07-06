@@ -6,7 +6,7 @@
 .. link:linq.adoc[LINQ]
 . link:object_oriented_programming.adoc[Object Oriented Programming]
 . link:wat_gaan_we_maken.adoc[Wat gaan we maken]
-. link:mvc_pattern.adoc[MVC]
+. link:mvc_pattern.adoc[ASP.NET MVC]
 .. link:dependency_injection.adoc[Dependency Injection]
 .. link:entity_framework.adoc[Entity Framework]
 . link:use_cases.adoc[Use Cases]

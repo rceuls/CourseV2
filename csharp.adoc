@@ -1,5 +1,3 @@
-:source-highlighter: pygments
-
 == Intro
 - Code testen kan door een nieuw console-project aan te maken. 
 1. `dotnet new console -n projectnaam`
