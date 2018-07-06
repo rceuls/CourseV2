@@ -1,9 +1,30 @@
 == .NET
-- Software Framework
+- Developer platform om applicaties op te ontwikkelen.
+
+== .NET Framework
+- Gratis
 - Ontwikkeld door Microsoft
+- Alleen op windows
+- Ondersteunt websites, services, desktop applicaties, ... .
 
 == .NET Core
+- Gratis, open source, cross-platform
+- C#, Visual Basic en F# (deze cursus = alleen C#)
+- Op dit moment alleen services, console applicaties en websites
 
-=== C#
+== Xamarin/Mono
+- .NET implementatie om cross-platform desktop applicaties te ontwikkelen
 
-== ASP.NET Core
+== .NET Standard
+- Basis API, beschikbaar op alle .NET implementaties.
+- Implementaties kunnen ook eigen API's hebben (bv, windows registry binnen het .NET Framework)
+
+== Libraries
+- Geschreven door externe partijen
+- Beschikbaar via de link:http://www.nuget.org[NuGet] package manager.
+- Vergelijkbaar met NPM
+
+== ASP.NET 
+- Web UI en Web API
+- Beschikbaar als NuGet packages
+- Standaard support voor Razor Pages (c# in html) en integratie met frameworks zoals Angular, React, ... 
