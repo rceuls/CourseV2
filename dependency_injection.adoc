@@ -17,6 +17,7 @@ Concrete stappen:
 2. Definieer je implementatie(s).
 3. Voeg je dependency toe aan de container door in de `ConfigureServices` van je `Startup.cs` `services.AddTransient<IMyService, MyService>();` toe te voegen.
 4. Roep de dependency toe aan de benodigde classes via constructor injection. Wanneer je je code gaat runnen gaat de container automatisch een juist object injecteren in de runtime waar nodig.
+
 [source,csharp]
 ----
 private IMyService _myService;
