@@ -12,5 +12,6 @@
 . link:use_cases.adoc[Use Cases]
 .. link:domain_model.adoc[Domain Model]
 . link:project_setup.adoc[Applicatie Structuur]
+. link:first_page.adoc[Eerste Pagina]
 . link:unit_testing.adoc[Unit Testing]
 . link:authentication.adoc[Andere]
