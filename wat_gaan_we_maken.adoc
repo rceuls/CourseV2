@@ -1,1 +1,2 @@
 * Census programma (bewoners per gemeente tracken)
+* We gaan dit maken in ASP.NET met het MVC pattern (omdat dit in de industrie veel gebruikt is en de de-facto standaard).

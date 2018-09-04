@@ -5,7 +5,7 @@
 == Classes
 - De structuur van de data
 - De beschikbare procedures
-- Is een soort van "blueprint".
+- zijn een soort van "blueprint".
 
 == Objects
 - Instanties van classes

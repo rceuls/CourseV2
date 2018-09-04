@@ -1,12 +1,81 @@
-== Gemeentes beheren (CRUD)
-* Aanmaken, verwijderen, editeren van gemmeentes
-* Overzicht & detailpagina van gemeentes bekijken
+== Definities
+* Een persoon heeft de volgende velden
+|===
+|Naam|Type|Verplicht?
 
-== Bewoners beheren (CRUD)
-* Aanmaken, verwijderen, editeren van personen
-* Overzicht & detailpagina van personen bekijken
-* Personen inwoner maken van gemeente (op één bepaald adres)
+|Voornaam|tekst|X
+|Achternaam|tekst|X
+|Geboortedatum|datetime|
+|===
 
-== Bewoners overzicht (API)
-* Overzicht geboortes per jaar
-* Exposen van filterbare data via JSON
+* Een gemeente heeft de volgende velden
+|===
+|Naam|Type|Verplicht?
+
+|Naam|tekst|X
+|Postcode|tekst|X
+|===
+
+* Een inwoner-record heeft de volgende velden
+|===
+|Naam|Type|Verplicht?
+
+|Persoon|Persoon|X
+|Gemeente|Gemeente|X
+|Begindatum|DateTime|X
+|Einddatum|DateTime|
+|===
+
+* Een persoon kan inwoner zijn van slechts één gemeente op een bepaald tijdstip.
+* Het systeem moet een historiek bijhouden van wie in welke gemeente woonde op welke datum.
+
+== Use Cases
+
+=== Navigatie
+* Bovenaan de pagina staat een navigatie menu waarme je kan navigeren tussen de use cases 'Gemeente Beheren', 'Personen beheren' en 'Inwoners Beheren'.
+
+=== Gemeenten
+
+==== Gemeente beheren
+* Je kan een gemeente beheren via een overzichtspagina waarop een tabel staat met alfabetisch gesorteerde lijst (op naam) van gemeenten.
+* Elke rij heeft ook een edit en een delete knop.
+* Als je op edit klikt ga je naar de use case "Gemeente aanpassen".
+* Als je op delete klikt ga je naar de use case "Gemeente verwijderen".
+
+==== Gemeente aanpassen
+* Je kan een gemeente aanpassen via de use case "Gemeente beheren".
+* Op het scherm staan twee invulvelden: "Postcode" en "Naam". Postcode moet minstens vier tekens bevatten, naam minstens twee.
+* Je kan opslaan via de knop "Opslaan" en Annuleren via de knop "Annuleren". Beide nemen je terug naar de use case "Gemeente beheren". Bij annuleren krijg je eerst nog de waarschuwing "bent u zeker dat u alle wijzigingen wilt ongedaan maken".
+
+==== Gemeente verwijderen
+* Je kan een gemeente verwijderen via de use case "Gemeente beheren".
+* Indien je op de knop "verwijderen" klikt krijg je een waarschuwing "bent u zeker dat u deze gemeente wilt verwijderen".
+* Indien de gebruiker op "Ja" klikt zal het systeem de gemeente verwijderen.
+* De knop is disabled als er nog inwoners verbonden zijn met de gemeente in kwestie.
+
+=== Personen
+
+==== Personen beheren
+* Je kan een gemeente beheren via een overzichtspagina waarop een tabel staat met een alfabetisch gesorteerde (achternaam, voornaam) lijst van personen staat. De kolommen zijn: achternaam, voornaam, geboortedatum. Deze laatste staat in het formaat dd/MM/yyyy. 
+* Je kan zoeken op personen; bovenaan de pagina staat er een zoekveld met een bijhorende knop. Indien je hier iets invult gaat hij op de combinatie voornaam + achternaam en achternaam + voornaam zoeken (serverside, dus niet binnen de getoonde tabel zelf).
+* Elke rij heeft ook een edit en een delete knop.
+* Als je op edit klikt ga je naar de use case "Persoon aanpassen". 
+* Als je op delete klikt ga je naar de use case "Persoon verwijderen".
+
+==== Persoon aanpassen
+* Je kan een persoon aanpassen via de use case "Personen beheren".
+* Op het scherm staan drie invulvelden: "Voornaam", "Achternaam" en "Geboortedatum". Geen enkel veld mag leegzijn, De namen moeten minstens twee tekens (elk) bevatten en de geboortedatum moet in het verleden liggen.
+* Onder de persoonsgegevens staat een tabelletje met "historiek". Hier staat een overzicht van waar en wanneer de persoon inwonder is geweest (meest recente eerst) . De getoonde velden zijn periode (begin en einddatum) en gemeentenaam.
+* Je kan opslaan via de knop "Opslaan" en Annuleren via de knop "Annuleren. Beide nemen je terug naar de use case "Persoon beheren". Bij annuleren krijg je eerst nog de waarschuwing "bent u zeker dat u alle wijzigingen wilt ongedaan maken".
+
+==== Persoon verwijderen
+* Je kan een persoon verwijderen via de use case "Personen beheren".
+* Indien je op de knop verwijderen klikt krijg je een waarschuwing "bent u zeker dat u deze persoon wilt verwijderen".
+* Indien de gebruiker op "Ja" klikt zal het systeem de gemeente verwijderen.
+* Indien er nog inwoners verbonden zijn aan de persoon worden deze ook mee verwijderd.
+
+=== Inwoners
+
+==== Inwoners beheren
+* Je kan een inwoner beheren via een overzichtspagina waarop een tabel staat met een chronologisch gesorteerde (begindatum) lijst van inwoners. De kolommen zijn: begindatum, einddatum, achternaam, voornaam, gemeente. Begindatum en einddatum zijn in het formaat dd/MM/yyyy.
+* Je kan zoeken op inwoners; bovenaan de pagina staan er de volgende zoekvelden (met bijhorende zoekknop): begindatum, einddatum, persoon (zoekt op achternaam + voornaam en voornaam + achternaam) en gemeente (dropdownlist met alle beschikbare gemeenten). 
